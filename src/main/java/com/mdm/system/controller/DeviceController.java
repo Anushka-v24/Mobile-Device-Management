@@ -86,4 +86,11 @@ public class DeviceController {
 
         return "Status Logged";
     }
+    @GetMapping("/logs")
+    public java.util.List<AuditLog> getLogs() {
+        return auditRepo.findAll();
+    }
+    
+    //@Autowired
+    //AuditLogRepository auditRepo;
 }

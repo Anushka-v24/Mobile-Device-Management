@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "AUDIT_LOG")
 public class AuditLog {
 
     @Id
@@ -14,6 +15,30 @@ public class AuditLog {
     private String action;
     private String status;
     private LocalDateTime timestamp;
+
+    // ✅ REQUIRED getters
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    // setters
 
     public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
