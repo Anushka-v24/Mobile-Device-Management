@@ -19,6 +19,14 @@ public class UpdateSchedule {
         return toVersion;
     }
 
+    public String getFromVersion() {
+        return fromVersion;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
     public void setFromVersion(String fromVersion) {
         this.fromVersion = fromVersion;
     }

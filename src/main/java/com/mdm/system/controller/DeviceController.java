@@ -38,22 +38,37 @@ public class DeviceController {
 
     // device checks update
     @GetMapping("/check-update")
-    public Map<String,Object> check(@RequestParam String id) {
+    public java.util.Map<String,Object> check(@RequestParam String id) {
+
+        System.out.println("Checking device: " + id);
 
         Device d = deviceRepo.findById(id).orElse(null);
+
+        if (d == null) {
+            return java.util.Map.of(
+                    "update", false,
+                    "error", "Device not registered"
+            );
+        }
+
+        System.out.println("Device version: " + d.getVersion());
+        System.out.println("Device region: " + d.getRegion());
 
         UpdateSchedule schedule =
                 scheduleRepo.findByFromVersionAndRegion(
                         d.getVersion(), d.getRegion());
 
-        if(schedule != null) {
-            return Map.of(
-                    "update", true,
-                    "version", schedule.getToVersion()
+        if (schedule == null) {
+            return java.util.Map.of(
+                    "update", false,
+                    "message", "No update scheduled"
             );
         }
 
-        return Map.of("update", false);
+        return java.util.Map.of(
+                "update", true,
+                "newVersion", schedule.getToVersion()
+        );
     }
 
     // device reports update status
