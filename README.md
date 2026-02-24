@@ -41,22 +41,22 @@ This project simulates a Mobile Device Management system that allows devices to 
 ## API Endpoints
 
 ### Register Device
-POST `/register?id=D1&version=1.0&region=Delhi`
+POST `http://localhost:8080/register?id=D1&region=Delhi&version=1.0`
 
 ---
 
 ### Schedule Update
-POST `/schedule?version=2.0&region=Delhi`
+POST `http://localhost:8080/admin/schedule?from=1.0&to=2.0&region=Delhi`
 
 ---
 
 ### Check Update
-GET `/check-update?id=D1`
+GET `http://localhost:8080/check-update?id=D1`
 
 ---
 
 ### Update Status
-POST `/update-status?deviceId=D1&status=installed`
+POST `http://localhost:8080/update-status?deviceId=D1&state=installed`
 
 ---
 
